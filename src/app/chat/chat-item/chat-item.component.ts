@@ -10,7 +10,11 @@ export class ChatItemComponent {
 
   @Input() public mensagem: Object;
 
-  constructor(chatService: ChatService) { 
+  constructor(private _chatService: ChatService) { 
+  }
+
+  public minhaMensagem():boolean{
+    return this.mensagem["author"] == this._chatService.nomeUsuario;
   }
 
 }

@@ -1,15 +1,11 @@
-<div class="jumbotron">
-    <h1>Chat Bootcamp</h1>
-  </div>
+<app-chat-header></app-chat-header>
 
-  <ul class="messageList list-group" #scrollMe>
-    <li class="list-group-item"
-    *ngFor="let mensagemObj of mensagens">
-    <app-chat-item [mensagem]="mensagemObj"></app-chat-item>
-    </li>
-  </ul>
+<ul class="messageList list-group" #scrollMe>
+  
+  <app-chat-item *ngFor="let mensagemObj of mensagens" [mensagem]="mensagemObj"></app-chat-item>
 
+</ul>
 
-  <textarea name="mensagem" id="" cols="30" rows="3" placeholder="Escreva sua mensagem aqui"
-  [(ngModel)]="mensagemInserir"></textarea>
-  <button class="btn btn-primary" (click)="enviaMensagem()">Enviar</button>
+<textarea name="mensagem" id="" cols="30" rows="3" placeholder="Escreva sua mensagem aqui"
+[(ngModel)]="mensagemInserir"></textarea>
+<button class="btn btn-primary" (click)="enviaMensagem()">Enviar</button>
