@@ -2,12 +2,13 @@
     <h1>Chat Bootcamp</h1>
   </div>
 
-  <ul class="list-group">
+  <ul class="messageList list-group" #scrollMe>
     <li class="list-group-item"
     *ngFor="let mensagemObj of mensagens">
     <app-chat-item [mensagem]="mensagemObj"></app-chat-item>
     </li>
   </ul>
+
 
   <textarea name="mensagem" id="" cols="30" rows="3" placeholder="Escreva sua mensagem aqui"
   [(ngModel)]="mensagemInserir"></textarea>

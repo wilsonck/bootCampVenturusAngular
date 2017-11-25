@@ -1,18 +1,32 @@
 import { ChatService} from './chat.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewChecked, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent {
+export class ChatComponent implements AfterViewChecked, AfterViewInit{
 
   public mensagens : Object[] = [];
   public mensagemInserir: string;
 
+  @ViewChild('scrollMe') private scrollContainer: ElementRef;
+
   constructor(private _chatService: ChatService){
     this._chatService.server.on('messages', m => this.mensagens.push(m));
+  }
+
+  private scrollToBottom (): void{
+    this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
+  }
+
+  ngAfterViewInit(){
+    this.scrollToBottom();
+  }
+
+  ngAfterViewChecked(){
+    this.scrollToBottom();
   }
 
   public enviaMensagem(): void{
