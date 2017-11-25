@@ -4,11 +4,11 @@
 
   <ul class="list-group">
     <li class="list-group-item"
-    *ngFor="let mensagemText of mensagens">
-    <app-chat-item [mensagem]="mensagemText"></app-chat-item>
+    *ngFor="let mensagemObj of mensagens">
+    <app-chat-item [mensagem]="mensagemObj"></app-chat-item>
     </li>
   </ul>
 
-  <textarea name="mensagem" id="" cols="30" rows="10" placeholder="Escreva sua mensagem aqui"
+  <textarea name="mensagem" id="" cols="30" rows="3" placeholder="Escreva sua mensagem aqui"
   [(ngModel)]="mensagemInserir"></textarea>
   <button class="btn btn-primary" (click)="enviaMensagem()">Enviar</button>

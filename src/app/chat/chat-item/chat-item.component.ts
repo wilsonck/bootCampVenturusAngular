@@ -8,13 +8,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ChatItemComponent {
 
-  @Input() public mensagem: string;
-  public hora: Date;
-  public usuario: string;
+  @Input() public mensagem: Object;
 
   constructor(chatService: ChatService) { 
-    this.hora = new Date();
-    this.usuario = chatService.nomeUsuario();
   }
 
 }

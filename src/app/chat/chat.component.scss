@@ -12,3 +12,8 @@ textarea{
     width:100%;
     resize:none;
 }
+
+ul{
+    max-height: 500px;
+    overflow-y: auto;
+}

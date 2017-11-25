@@ -8,14 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatComponent {
 
-  public mensagens : string[] = [];
+  public mensagens : Object[] = [];
   public mensagemInserir: string;
 
-  constructor(chatService: ChatService){}
+  constructor(private _chatService: ChatService){
+    this._chatService.server.on('messages', m => this.mensagens.push(m));
+  }
 
   public enviaMensagem(): void{
-    this.mensagens.push(this.mensagemInserir);
-    this.mensagemInserir = '';
+
+    let newMessage = {
+      message: this.mensagemInserir,
+      author: this._chatService.nomeUsuario
+    };
+
+    this._chatService.server.emit('messages', newMessage);
+    this.mensagemInserir = "";
   }
 
 }
